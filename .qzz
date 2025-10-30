@@ -1,0 +1,17 @@
+core.qzz
+
+FrameDOS kernel
+-core.com
+--src
+---main.c
+--include
+---defines.h
+---grub.h
+-command.com
+--src
+---main.c
+-gg.sys
+-pci.sys
+-file.sys
+-syscall.sys
+-sysio.sys

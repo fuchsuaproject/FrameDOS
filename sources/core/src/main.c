@@ -1,4 +1,4 @@
-#include<include.c>
+#include<include.h>
 
 extern void kernel_main(struct boot_bundle_t*);
 //unsigned long
@@ -42,14 +42,16 @@ void __attribute__((naked, secton(".multiboot"))) start(void) {
 
 
 
-
+typedef struct {
+    void (*gg_init)(void);
+} gg_apt_t;//[]
 
 //
 
 void kernel_main(boot_bundle_t* info) {
     // infomation of GDT
     struct gdt_ptr* gdt = info->group.gdt;
-    uint64 gdt_base = gdt_base = gdt->;
+    uint64 gdt_base = gdt_base = gdt->base;
     uint16 gdt_limit = gdt->limit;
 
     // infomation of group
@@ -66,6 +68,18 @@ void kernel_main(boot_bundle_t* info) {
     uint32 cmdline = info->boot.cmdline;
 
     // start reset kernel
+    multiboot_module_t *mods = (multiboot_module_t *)info->boot.mods_addr;
+
+    //for (uint32_t i = 0; i < info->boot.mods_count; i++) {
+        //jjjjjjjjjjjjjjjjjjjjj
+        //
+    //}
+
+    //헬로
+
+    unsigned long mod_start = mods[0].mod_start;
+    gg_apt_t *gg = (gg_apt_t*)mod_start;
+    //gg->gg_init();
 
     while(1) {
         __asm__ __volatile__("hlt");
