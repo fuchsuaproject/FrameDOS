@@ -46,6 +46,15 @@ typedef struct {
     void (*gg_init)(void);
 } gg_apt_t;//[]
 
+typedef struct {
+    void (*pci_init)();
+    pci_device_t* (*pci_get_devices)();
+    unsigned int (*pci_read_config)(unsigned char bus, unsigned char slot, unsigned char func, unsigned char offset);
+    void (*pci_add_device)(unsigned char bus, unsigned char slot, unsigned char func, unsigned short vendor, unsigned short device, unsigned char class_code, unsigned char subclass);
+    pci_device_t* pci_devices;
+    int* pci_device_count = 0;
+} pci_api_t;//$
+
 //
 
 void kernel_main(boot_bundle_t* info) {
@@ -78,7 +87,9 @@ void kernel_main(boot_bundle_t* info) {
     //헬로
 
     unsigned long mod_start = mods[0].mod_start;
-    gg_apt_t *gg = (gg_apt_t*)mod_start;
+    gg_api_t *gg = (gg_api_t*)mod_start;
+    pci_api_t *pci = (gg_api_t*)pci_q;
+    pci->
     //gg->gg_init();
 
     while(1) {

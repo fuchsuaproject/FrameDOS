@@ -1,5 +1,9 @@
 #include <include.h>
 
+//832x624, 64x48
+//only text
+//
+
 void gg_init(void) {
     
 }
