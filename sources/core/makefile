@@ -7,7 +7,7 @@ all:
 	ld -nostdlib -znocombreloc \
 		-T /usr/lib/elf_x86_64_efi.lds \
 		-shared -Bsymbolic \
-		/usr/lib/x86_64-linux-gnu/gnu-efi/libefi.a \
-		/usr/lib/x86_64-linux-gnu/gnu-efi/libgnuefi.a \
+		~/git/gnu-efi/x86_64/lib/libefi.a \
+		~/git/gnu-efi/x86_64/gnuefi/libgnuefi.a \
 		-o BOOTX64.EFI boot.o
 
