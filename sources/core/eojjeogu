@@ -1,6 +1,0 @@
-gcc -nostdlib -znocombreloc \
-    -T /usr/lib/elf_x86_64_efi.lds \
-    -shared -Bsymbolic \
-    /path/to/gnu-efi/x86_64/libefi.a \
-    /path/to/gnu-efi/x86_64/libgnuefi.a \
-    -o BOOTX64.EFI boot.o
